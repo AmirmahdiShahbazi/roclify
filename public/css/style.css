@@ -1,0 +1,168 @@
+@font-face {
+    font-family: 'vazir';
+    src: url('../fonts/Vazir.ttf') format('truetype');
+    /* Regular weight */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'vazir';
+    src: url('../fonts/Vazir-Light.ttf') format('truetype');
+    /* Light weight */
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'vazir';
+    src: url('../fonts/Vazir-Bold.ttf') format('truetype');
+    /* Bold weight */
+    font-weight: bold;
+    font-style: normal;
+}
+
+body {
+    font-family: 'vazir';
+    background-color: #1A1A1A;
+}
+
+.collapse .navbar-collapse {
+    color: white;
+}
+
+nav {
+    background-color: #1A1A1A;
+}
+
+.search {
+    width: 80%;
+    background-color: #242424;
+    border: none;
+    border-radius: 0px;
+    font-size: 18px;
+    height: 40px;
+}
+
+.search-button {
+    border: none;
+    height: 40px;
+    background-color: #242424;
+}
+
+.search-button i {
+    font-size: 18px;
+}
+
+.search:focus {
+    border: none;
+    outline: none;
+    background-color: #363636;
+    caret-color: white;
+}
+
+@media only screen and (max-width: 767px) {
+    .search-button {
+        display: none;
+    }
+}
+
+
+/*  */
+
+.menu {
+    font-size: 25px;
+}
+
+.login-link:hover {
+    color: #c5c5c5;
+}
+
+.bookmark:hover {
+    color: #c5c5c5;
+}
+
+.scrolling-wrapper {
+    overflow-x: auto;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 3.4em;
+}
+
+.subtitle {
+    font-size: 1.25em;
+    opacity: 0.65;
+}
+
+.card-block {
+    height: 200px;
+    background-color: #fff;
+    border: none;
+    background-position: center;
+    background-size: cover;
+    transition: all 0.2s ease-in-out !important;
+    border-radius: 10px;
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: none;
+        opacity: 0.9;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .card-block {
+        height: 100px;
+        /* width: 140%; */
+    }
+}
+
+
+/* Change the background color of the scrollbar track */
+
+::-webkit-scrollbar {
+    border: solid #535353 1px;
+    background-color: #363636;
+}
+
+
+/* Change the color of the scrollbar thumb (drag handle) */
+
+ ::-webkit-scrollbar-thumb {
+    background-color: #535353;
+    border-radius: 1px;
+}
+
+
+/* Optional: Add a hover effect to the scrollbar thumb */
+
+ ::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+.description {
+    max-width: 750px;
+    word-wrap: break-word;
+    color: rgb(216, 216, 216);
+}
+
+.date {
+    color: rgb(238, 238, 238);
+    font-size: 14px;
+}
+
+.description-l {
+    line-height: 1.8;
+    color: #e6e6e6;
+}
+
+.thumbnaile {
+    height: 400px;
+}
+
+@media only screen and (max-width: 767px) {
+    .thumbnaile {
+        height: 150px;
+    }
+}
