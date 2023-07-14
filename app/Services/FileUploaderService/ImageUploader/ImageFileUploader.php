@@ -68,23 +68,25 @@ class ImageFileUploader implements FileUploaderInterface
 
         }
 
+        return $urls;
+
 
     }
 
     public function updateThumbnail(array $images)
     {
-
-        
+        $urls=[];
         foreach($images as $dirName=>$image)
         {
             $path=$this->basePath($dirName).'/thumbnail';
 
             Storage::disk('public')->deleteDirectory($path);
 
-            $this->upload(['thumbnail'=>$image],$dirName);
+            $urls[]=$this->upload(['thumbnail'=>$image],$dirName);
             
             
         }
+        return $urls;
 
     }
 

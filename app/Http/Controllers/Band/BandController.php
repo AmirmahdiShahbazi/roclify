@@ -117,29 +117,57 @@ class BandController extends Controller
 
     public function update(UpdateBandRequest $request,$id)
     {
-        $validatedData=$request->validated();
         
-        $this->updateImageAndThumbnail($validatedData);
+        try{
+            DB::beginTransaction();
 
-        return back()->with('success','بند با موفقیت بروزرسانی شد');
+            $band=Band::find($id);
+
+            $validatedData=$request->validated();
+            
+            $this->updateImageAndThumbnail($validatedData,$band);
+
+            $band->update(['name'=>$validatedData['band-name'],'biography'=>$validatedData['band-bio']]);
+    
+            DB::commit();
+
+            return back()->with('success','بند با موفقیت بروزرسانی شد');
+
+        }catch(Exception $e){
+
+            DB::rollBack();
+
+            return back()->with('failed',$e->getMessage());
+
+        }
+
+
     }
 
 
 
 
 
-    private function updateImageAndThumbnail(array $validatedData)
+    private function updateImageAndThumbnail(array $validatedData,$band)
     {
         if(isset($validatedData['band-image']))
         {
-            $this->imageFileUploader->updateImage([$validatedData['band-name']=>$validatedData['band-image']]);
+
+            $image=$this->imageFileUploader->updateImage([$validatedData['band-name']=>$validatedData['band-image']]);
+           
+            $band->update(['image'=>$image[0]['image']]);
         }
 
 
         if(isset($validatedData['band-thumbnail']))
         {
-            $this->imageFileUploader->updateThumbnail([$validatedData['band-name']=>$validatedData['band-thumbnail']]);
+           $thumbnail= $this->imageFileUploader->updateThumbnail([$validatedData['band-name']=>$validatedData['band-thumbnail']]);
+       
+            $band->update(['thumbnail'=>$thumbnail[0]['thumbnail']]);
+
+
         }
+
 
     }
 

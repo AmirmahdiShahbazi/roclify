@@ -6,6 +6,7 @@ use App\Exceptions\BandNotFoundException;
 use App\Exceptions\DeleteAblumFailed;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AlbumStoreRequest;
+use App\Http\Requests\AlbumUpdateRequest;
 use App\Models\Album;
 use App\Models\Band;
 use App\Services\FileUploaderService\ImageUploader\AlbumImageUploader;
@@ -56,7 +57,7 @@ class AlbumController extends Controller
     
             Album::create(['name'=>$validatedData['album-name'],'biography'=>$validatedData['album-bio']
             
-            ,'user_id'=>1,'thumbnail'=>$uploadedFiles['thumbnail'],'image'=>$uploadedFiles['image'],'band_id'=>$band_id,'download-link'=>$validatedData['album-link']]);
+            ,'user_id'=>1,'thumbnail'=>$uploadedFiles['thumbnail'],'image'=>$uploadedFiles['image'],'band_id'=>$band_id,'download_link'=>$validatedData['album-link']]);
             
 
              
@@ -120,6 +121,80 @@ class AlbumController extends Controller
 
     }
 
+
+
+
+    public function edit($id)
+    {
+
+        $album=Album::find($id);
+
+        
+
+        return view('dashboard.edit.album',compact('album'));
+
+
+    }
+
+
+
+
+
+    public function update(AlbumUpdateRequest $request,$id)
+    {
+        dd($request);
+        
+        try{
+            DB::beginTransaction();
+
+            $album=Album::find($id);
+
+            $validatedData=$request->validated();
+            
+            $this->updateImageAndThumbnail($validatedData,$album);
+
+            $album->update(['name'=>$validatedData['album-name'],'biography'=>$validatedData['album-bio']]);
+    
+            DB::commit();
+
+            return back()->with('success','آلبوم با موفقیت بروزرسانی شد');
+
+        }catch(Exception $e){
+
+            DB::rollBack();
+
+            return back()->with('failed',$e->getMessage());
+
+        }
+
+
+    }
+
+
+    
+
+    private function updateImageAndThumbnail(array $validatedData,$album)
+    {
+        if(isset($validatedData['album-image']))
+        {
+
+            $image=$this->imageFileUploader->updateImage([$validatedData['album-name']=>$validatedData['album-image']]);
+           
+            $album->update(['image'=>$image[0]['image']]);
+        }
+
+
+        if(isset($validatedData['album-thumbnail']))
+        {
+           $thumbnail= $this->imageFileUploader->updateThumbnail([$validatedData['album-name']=>$validatedData['album-thumbnail']]);
+       
+            $album->update(['thumbnail'=>$thumbnail[0]['thumbnail']]);
+
+
+        }
+
+
+    }
 
 
 }

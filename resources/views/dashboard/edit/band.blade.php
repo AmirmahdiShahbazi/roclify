@@ -14,6 +14,7 @@
 
       <div class="row">
       <div class="col">
+        <input type="hidden" name="band-id" value="{{$band->id}}" >
         <input id="search" type="text" value="{{$band->name}}" class="form-control" name="band-name"placeholder="نام بند">
 
       </div>

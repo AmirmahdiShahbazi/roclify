@@ -49,6 +49,11 @@ Route::prefix('/dashboard')->group(function(){
 
     Route::put('bands/{id}/update',[BandController::class,'update'])->name('dashbord.bands.update');
 
+    Route::get('albums/{id}/edit',[AlbumController::class,'edit'])->name('dashbord.albums.edit');
+
+    Route::put('albums/{id}/update',[AlbumController::class,'update'])->name('dashbord.albums.update');
+
+
     Route::delete('bands/{id}/delete',[BandController::class,'delete'])->name('dashbord.bands.delete');
 
 });

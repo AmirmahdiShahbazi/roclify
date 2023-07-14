@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class UpdateBandRequest extends FormRequest
+class AlbumUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,13 +21,13 @@ class UpdateBandRequest extends FormRequest
      */
     public function rules(): array
     {
-
         return [
-            'band-name'=>'required|string|min:3|unique:bands,name,'.$this->get('band-id'),
-            'band-bio'=>'required|string',
-            'band-image'=>'nullable|image',
-            'band-thumbnail'=>'nullable|image',
-            
-        ];
-    }
+            'album-name'=>'required|string|min:3|unique:albums,name,'.$this->get('album-id'),
+            'album-bio'=>'required|string',
+            'album-image'=>'nullable|image',
+            'album-thumbnail'=>'nullable|image',
+            'album-link'=>'required|string',   
+            'album-band'=>'required|exists:albums,name'         
+
+        ];    }
 }

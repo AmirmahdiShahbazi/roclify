@@ -32,11 +32,9 @@
        </form> 
 
 
-       <form action="" method="post" class="d-inline">
-         @csrf 
-         @method('DELETE')
-        <button type="submit" class="fa-solid fa-pen-to-square mr-1 bg-transparent border-0 text-white cursor-pointer" style="cursor: pointer"></button>
-      </form> </td>
+         
+        <a type="submit" href="{{route('dashbord.albums.edit',$album->id)}}" class="fa-solid fa-pen-to-square mr-1 bg-transparent border-0 text-white cursor-pointer" style="cursor: pointer"></a>
+      </td>
       </tr>
       @endforeach
 
