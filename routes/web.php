@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Album\AlbumController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Band\BandController;
 use Illuminate\Support\Facades\Route;
 
@@ -57,6 +59,15 @@ Route::prefix('/dashboard')->group(function(){
     Route::delete('bands/{id}/delete',[BandController::class,'delete'])->name('dashbord.bands.delete');
 
 });
+Route::prefix('auth')->group(function(){
+
+    Route::get('login',[LoginController::class,'login'])->name('auth.login');
+
+    Route::get('register',[RegisterController::class,'register'])->name('auth.register');
+
+
+
+})->middleware('guest');
 
 
 

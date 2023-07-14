@@ -15,6 +15,11 @@
     $(document).ready(function() {
        $("#markItUp").markItUp(mySettings);
     });
+
+ </script>
+ <script>
+
+   
  </script>
 </body>
 
