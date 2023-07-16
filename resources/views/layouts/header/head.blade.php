@@ -10,6 +10,8 @@
 
   <title>پنل مدیریت</title>
 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="{{asset('panel/plugins/font-awesome/css/font-awesome.min.css')}}">
   <!-- IonIcons -->

@@ -1,5 +1,7 @@
 @extends('layouts.home.home')
 @section('content')
+@include('alerts.danger')
+@include('alerts.success')
 <section class="pt-3 ">
     <div class="container-fluid ">
         <span class="text-white float-right ">بند ها</span>

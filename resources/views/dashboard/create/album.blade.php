@@ -35,7 +35,7 @@
         <input type="text" class="form-control" name="album-name" placeholder="نام آلبوم">
       </div>
       <div class="col">
-        <input type="text" class="form-control" name="album-band" placeholder="نام بند">
+        <input type="text"  class="form-control" name="album-band" placeholder="نام بند">
 
       </div>
 

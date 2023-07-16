@@ -3,6 +3,9 @@ $(document).ready(function() {
     if (window.innerWidth <= 767) {
         $("#login-link").addClass("d-flex justify-content-center");
 
+        $("#search").addClass("d-flex justify-content-center");
+
+
         $(".description").css("font-size", "12px");
         $(".date").css("font-size", "10px");
 

@@ -21,7 +21,7 @@
 
 
                     <li class="nav-item ">
-                        <form class="form-inline my-2 my-lg-0 mr-sm-4 ">
+                        <form id="search"  class="form-inline my-2 my-lg-0 mr-sm-4 ">
                             <input class="search mr-sm-2 h5 pr-2 text-white" type="search " placeholder="جستجو کنید " aria-label="Search ">
                             <button class="search-button text-white h5 " type="submit "><i class="m-2 fa-solid fa-magnifying-glass "></i></button>
                         </form>
@@ -32,11 +32,29 @@
                 </ul>
 
             </div>
+            @guest
+                
             <div class="collapse navbar-collapse float-left " id="navbarSupportedContent">
                 <a href="#" id="login-link" class=" float-left text-white h5 text-decoration-none" style="width: 100%;">
                     <i class="  fa-regular fa-user ml-1"></i>
                     <span class="login-link ">ورود / ثبت نام</span>
                 </a>
             </div>
+            @endguest
+            
+            @auth
+            
+            <div class="collapse navbar-collapse float-left " id="navbarSupportedContent">
+                <a href="{{route('auth.logout')}}" id="login-link" class=" float-left text-white h5 text-decoration-none" style="width: 100%;">
+
+        
+                    <i class=" text-white  material-symbols-outlined"></i>
+                    <span class="login-link ">خروج از حساب کاربری</span>
+                </a>
+            </div>
+            @endauth
+            
+
+
         </nav>
     </header>
