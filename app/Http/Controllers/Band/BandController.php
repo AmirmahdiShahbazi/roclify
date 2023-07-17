@@ -172,6 +172,35 @@ class BandController extends Controller
     }
 
 
+
+
+
+    public function archive()
+    {
+        $bands=Band::paginate(6);
+        
+        return view('band.archive',compact('bands'));
+    
+    }
+
+    public function single($id)
+    {
+
+
+
+        $band=Band::findOrFail($id);
+
+        $bands=Band::where('id', '!=', $id)
+        ->latest()
+        ->take(5)
+        ->get();
+
+        $bands = (object)$bands->all();
+
+        return view('band.single',compact('band','bands'));
+    }
+
+
 }
 
 

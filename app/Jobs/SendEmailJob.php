@@ -11,6 +11,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Password;
 
 class SendEmailJob implements ShouldQueue
 {
@@ -27,9 +28,11 @@ class SendEmailJob implements ShouldQueue
     /**
      * Execute the job.
      */
-    public function handle(): void
+    public function handle():void
     {
         
-        Mail::to($this->email)->send(new SampleMail);
+         Password::sendResetLink($this->email);
+     
+  
     }
 }

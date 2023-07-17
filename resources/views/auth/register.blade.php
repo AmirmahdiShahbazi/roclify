@@ -38,7 +38,7 @@
   
 
 
-    <a href="#!" class="text-center">ورود</a>
+    <a href="{{route('auth.login.index')}}" class="text-center">ورود</a>
 
 
   </form>

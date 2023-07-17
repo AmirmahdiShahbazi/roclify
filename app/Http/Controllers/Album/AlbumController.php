@@ -142,7 +142,6 @@ class AlbumController extends Controller
 
     public function update(AlbumUpdateRequest $request,$id)
     {
-        dd($request);
         
         try{
             DB::beginTransaction();
@@ -192,6 +191,18 @@ class AlbumController extends Controller
 
 
         }
+
+
+    }
+
+
+
+    public function archive(){
+
+        $albums=Album::paginate('6');
+
+        return view('album.archive',compact('albums'));
+
 
 
     }

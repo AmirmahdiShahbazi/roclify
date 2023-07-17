@@ -35,7 +35,7 @@
             @guest
                 
             <div class="collapse navbar-collapse float-left " id="navbarSupportedContent">
-                <a href="#" id="login-link" class=" float-left text-white h5 text-decoration-none" style="width: 100%;">
+                <a href="{{route('auth.login.index')}}" id="login-link" class=" float-left text-white h5 text-decoration-none" style="width: 100%;">
                     <i class="  fa-regular fa-user ml-1"></i>
                     <span class="login-link ">ورود / ثبت نام</span>
                 </a>

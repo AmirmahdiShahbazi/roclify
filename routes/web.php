@@ -85,7 +85,21 @@ Route::prefix('auth')->group(function(){
 
     Route::get('reset-password/{token}',[PasswordController::class,'showResetForm'])->name('auth.reset-password');
 
+    Route::post('reset-password',[PasswordController::class,'resetPassword'])->name('auth.reset-password.reset');
+
 })->middleware('guest');
+
+Route::prefix('bands')->group(function(){
+
+    Route::get('/',[BandController::class,'archive'])->name('bands.archive');
+
+    Route::get('/{band_id}',[BandController::class,'single'])->name('bands.single');
+
+});
+
+Route::prefix('albums')->group(function(){
+    Route::get('/',[AlbumController::class,'archive'])->name('albums.archive');  
+});
 
 
 

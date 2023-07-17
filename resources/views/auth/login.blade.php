@@ -30,7 +30,7 @@
   
       <div class="col">
         <!-- Simple link -->
-        <a href="#!" style="font-size: 12px;">پسورد خود را فراموش کرده اید؟</a>
+        <a href="{{route('auth.forgot-password')}}" style="font-size: 12px;">پسورد خود را فراموش کرده اید؟</a>
       </div>
     </div>
   
@@ -39,7 +39,7 @@
   
 
 
-    <a href="#!" class="text-center">ثبت نام</a>
+    <a href="{{route('auth.register.index')}}" class="text-center">ثبت نام</a>
 
 
   </form>
