@@ -5,6 +5,7 @@ $(document).ready(function() {
 
         $("#search").addClass("d-flex justify-content-center");
 
+        $("#extra").remove();
 
         $(".description").css("font-size", "12px");
         $(".date").css("font-size", "10px");

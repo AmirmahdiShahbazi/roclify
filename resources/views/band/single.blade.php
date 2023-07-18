@@ -9,7 +9,7 @@
             <div class="col col-11 ">
                 <h1 class="text-white text-right mb-5">{{$band->name}}</h2>
                 <div class="thumbnaile card card-block mb-5">
-                    <img style="object-fit:cover; width: 100%; height: 100%;" class="rounded border border-white"  src="{{asset("storage/".$band->thumbnail)}}">
+                    <img style="object-fit:cover; width: 100%; height: 100%;" class="rounded border border-white"  src="{{asset("storage/".$band->image)}}">
 
                 </div>
 
@@ -37,7 +37,7 @@
         <ul class="list-group text-right pr-0 pb-5">
             <li class="list-group-item bg-dark text-white">البوم ها</li>
             @foreach ($band->albums as $album)
-            <li class="list-group-item bg-secondary text-white "><a href="#">{{$album->name}}</a></li>
+            <li class="list-group-item bg-secondary text-white "><a href="{{route('albums.single',$album->id)}}">{{$album->name}}</a></li>
 
             @endforeach
 

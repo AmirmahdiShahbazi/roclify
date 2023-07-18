@@ -28,13 +28,13 @@
                     <p class=" description float-lg-right mt-0  text-right  " style="    ">
                         {{$album->biography}}
                     </p>
-
-                    <a>{{$album->band->name}}>{{$band->name}}</a>
-
+                    <div id="extra">
+                    <a  href="{{route('bands.single',$album->band->id)}}" class="text-secondary  ">{{$album->band->name}}</a><span class="text-secondary"> > </span>    <a href="#" class="text-secondary">{{$album->name}}</a>
+                     </div>
                     <p class="date float-lg-right">
                         تاریخ انتشار : {{explode(" ",$album->created_at)[0]}}
                     </p>
-                    <a href="{{route('bands.single',$album->id)}}" class="float-left" href="#">ادامه مطالب</a>
+                    <a href="{{route('albums.single',$album->id)}}" class="float-left" href="#">ادامه مطالب</a>
 
 
 

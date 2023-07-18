@@ -8,37 +8,22 @@
         <a href="#" class=" text-right " style="color: #4287f5"> مشاهده همه &#62;</a>
 
         <div class="scrolling-wrapper row flex-row flex-nowrap  pb-4 pt-2">
+@foreach ($bands as $band)
+    
+            <div class="col-4 ">
+                <div class="card card-block card-1"> 
+                    <a href="{{route('bands.single',$band->id)}}" style="width:100%;height:100%;">
 
-            <div class="col-4 ">
-                <div class="card card-block card-1"></div>
+                        <img style="object-fit: cover; width: 100%; height: 100%;" class="rounded border border-white"  src="{{asset("storage/".$band->thumbnail)}}">
+
+
+
+                    </a>
+                </div>
             </div>
-            <div class="col-4 ">
-                <div class="card card-block card-2"></div>
-            </div>
-            <div class="col-4 ">
-                <div class="card card-block card-3"></div>
-            </div>
-            <div class="col-4 ">
-                <div class="card card-block card-4"></div>
-            </div>
-            <div class="col-4 ">
-                <div class="card card-block card-5"></div>
-            </div>
-            <div class="col-4 ">
-                <div class="card card-block card-6"></div>
-            </div>
-            <div class="col-4 ">
-                <div class="card card-block card-7"></div>
-            </div>
-            <div class="col-4 ">
-                <div class="card card-block card-8"></div>
-            </div>
-            <div class="col-4 ">
-                <div class="card card-block card-9"></div>
-            </div>
-            <div class="col-4 ">
-                <div class="card card-block card-10"></div>
-            </div>
+            @endforeach
+
+
         </div>
 
     </div>
@@ -52,37 +37,22 @@
 
 
         <div class="scrolling-wrapper row flex-row flex-nowrap pb-4 pt-2">
+            @foreach ($albums as $album)
+                <div id="item" class="col-4">
+                    <div class="card card-block card-1">
 
-            <div id="item" class="col-4">
-                <div class="card card-block card-1"></div>
-            </div>
-            <div id="item" class="col-4 ">
-                <div class="card card-block card-2"></div>
-            </div>
-            <div id="item" class="col-4 ">
-                <div class="card card-block card-3"></div>
-            </div>
-            <div id="item" class="col-4 ">
-                <div class="card card-block card-4"></div>
-            </div>
-            <div id="item" class="col-4 ">
-                <div class="card card-block card-5"></div>
-            </div>
-            <div id="item" class="col-4 ">
-                <div class="card card-block card-6"></div>
-            </div>
-            <div id="item" class="col-4 ">
-                <div class="card card-block card-7"></div>
-            </div>
-            <div id="item" class="col-4 ">
-                <div class="card card-block card-8"></div>
-            </div>
-            <div id="item" class="col-4 ">
-                <div class="card card-block card-9"></div>
-            </div>
-            <div id="item" class="col-4 ">
-                <div class="card card-block card-10"></div>
-            </div>
+                        <a href="{{route('albums.single',$album->id)}}" style="width:100%;height:100%;">
+
+                            <img style="object-fit: cover; width: 100%; height: 100%;" class="rounded border border-white"  src="{{asset("storage/".$band->thumbnail)}}">
+    
+    
+    
+                        </a>
+                    </div>
+                </div>
+            @endforeach
+
+            
         </div>
     </div>
 </section>

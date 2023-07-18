@@ -207,6 +207,25 @@ class AlbumController extends Controller
 
     }
 
+    
+    public function single($id)
+    {
+
+
+
+        $album=Album::findOrFail($id);
+
+        $albums=Album::where('id', '!=', $id)
+        ->latest()
+        ->take(5)
+        ->get();
+
+        $albums = (object)$albums->all();
+
+        return view('album.single',compact('album','albums'));
+    }
+
+
 
 }
 

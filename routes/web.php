@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Band\BandController;
+use App\Http\Middleware\AdminMiddleware;
 use App\Jobs\SendEmailJob;
 use App\Mail\SampleMail;
 use Illuminate\Http\Request;
@@ -35,37 +36,37 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 
 Route::prefix('/dashboard')->group(function(){
 
-    Route::get('',[BandController::class,'index'])->name('dashbord');
+    Route::get('',[BandController::class,'index'])->name('dashbord')->middleware('admin');
 
-    Route::get('bands',[BandController::class,'index'])->name('dashbord.bands');
+    Route::get('bands',[BandController::class,'index'])->name('dashbord.bands')->middleware('admin');
 
-    Route::get('albums',[AlbumController::class,'index'])->name('dashbord.albums');
+    Route::get('albums',[AlbumController::class,'index'])->name('dashbord.albums')->middleware('admin');
 
-    Route::get('albums/create',[AlbumController::class,'create'])->name('dashbord.albums.create');
+    Route::get('albums/create',[AlbumController::class,'create'])->name('dashbord.albums.create')->middleware('admin');
 
-    Route::get('bands/create',[BandController::class,'create'])->name('dashbord.bands.create');
+    Route::get('bands/create',[BandController::class,'create'])->name('dashbord.bands.create')->middleware('admin');
 
-    Route::get('albums/create',[AlbumController::class,'create'])->name('dashbord.albums.create');
+    Route::get('albums/create',[AlbumController::class,'create'])->name('dashbord.albums.create')->middleware('admin');
 
-    Route::get('albums/ajax-search',[AlbumController::class,'ajaxSearch'])->name('dashbord.albums.ajaxSearch');
+    Route::get('albums/ajax-search',[AlbumController::class,'ajaxSearch'])->name('dashbord.albums.ajaxSearch')->middleware('admin');
 
-
-    Route::post('bands/store',[BandController::class,'store'])->name('dashbord.bands.store');
+    Route::post('bands/store',[BandController::class,'store'])->name('dashbord.bands.store')->middleware('admin');
     
-    Route::post('albums/store',[AlbumController::class,'store'])->name('dashbord.albums.store');
+    Route::post('albums/store',[AlbumController::class,'store'])->name('dashbord.albums.store')->middleware('admin');
 
-    Route::get('bands/{id}/edit',[BandController::class,'edit'])->name('dashbord.bands.edit');
+    Route::get('bands/{id}/edit',[BandController::class,'edit'])->name('dashbord.bands.edit')->middleware('admin');
 
-    Route::put('bands/{id}/update',[BandController::class,'update'])->name('dashbord.bands.update');
+    Route::put('bands/{id}/update',[BandController::class,'update'])->name('dashbord.bands.update')->middleware('admin');
 
-    Route::get('albums/{id}/edit',[AlbumController::class,'edit'])->name('dashbord.albums.edit');
+    Route::get('albums/{id}/edit',[AlbumController::class,'edit'])->name('dashbord.albums.edit')->middleware('admin');
 
-    Route::put('albums/{id}/update',[AlbumController::class,'update'])->name('dashbord.albums.update');
+    Route::put('albums/{id}/update',[AlbumController::class,'update'])->name('dashbord.albums.update')->middleware('admin');
 
-
-    Route::delete('bands/{id}/delete',[BandController::class,'delete'])->name('dashbord.bands.delete');
+    Route::delete('bands/{id}/delete',[BandController::class,'delete'])->name('dashbord.bands.delete')->middleware('admin');
 
 });
+
+
 Route::prefix('auth')->group(function(){
 
     Route::get('login',[LoginController::class,'index'])->name('auth.login.index');
@@ -89,6 +90,10 @@ Route::prefix('auth')->group(function(){
 
 })->middleware('guest');
 
+
+
+
+
 Route::prefix('bands')->group(function(){
 
     Route::get('/',[BandController::class,'archive'])->name('bands.archive');
@@ -98,7 +103,12 @@ Route::prefix('bands')->group(function(){
 });
 
 Route::prefix('albums')->group(function(){
+
     Route::get('/',[AlbumController::class,'archive'])->name('albums.archive');  
+
+    Route::get('/{album_id}',[AlbumController::class,'single'])->name('albums.single');
+
+
 });
 
 
