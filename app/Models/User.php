@@ -49,9 +49,13 @@ class User extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
 
-        
-
         $this->notify(new CustomResetPasswordNotification($token));
+    }
+
+
+    public function isAdmin()
+    {
+        return $this->role === 'admin'; // Adjust the condition based on your user role logic
     }
 
  

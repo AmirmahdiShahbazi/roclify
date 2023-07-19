@@ -167,10 +167,19 @@ h1 {
     .thumbnaile {
         height: 150px;
     }
+
+    .login-link{
+        width: 100%;
+
+
+        
+    }
+
 }
 
-.card .card-block{
-
-
+#login-link{
+    /* width: 10%; */
 }
+
+
 

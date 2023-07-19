@@ -5,7 +5,7 @@
 <section class="pt-3 ">
     <div class="container-fluid ">
         <span class="text-white float-right ">بند ها</span>
-        <a href="#" class=" text-right " style="color: #4287f5"> مشاهده همه &#62;</a>
+        <a href="{{route('bands.archive')}}" class=" text-right " style="color: #4287f5"> مشاهده همه &#62;</a>
 
         <div class="scrolling-wrapper row flex-row flex-nowrap  pb-4 pt-2">
 @foreach ($bands as $band)
@@ -33,7 +33,7 @@
 <section class="py-5 ">
     <div class="container-fluid ">
         <span class="text-white float-right ">آلبوم ها</span>
-        <a href="#" class=" text-right " style="color: #4287f5"> مشاهده همه &#62;</a>
+        <a href="{{route('albums.archive')}}" class=" text-right " style="color: #4287f5"> مشاهده همه &#62;</a>
 
 
         <div class="scrolling-wrapper row flex-row flex-nowrap pb-4 pt-2">

@@ -1,7 +1,24 @@
 $(document).ready(function() {
     var paragraph = $(".description").text();
     if (window.innerWidth <= 767) {
-        $("#login-link").addClass("d-flex justify-content-center");
+
+        // $(".login-link").css("width", "100%");
+        $("#dashboard-link").addClass("login-link");
+        $(".login-link").addClass("d-flex justify-content-center");
+        $(".login-link").addClass("d-flex justify-content-center");
+
+       
+
+
+        $(".navbarSupportedContent").removeClass("d-flex");
+
+        $(".login-link").removeClass("mr-2");
+        $("i.fa-regular.fa-user.ml-1").remove();
+
+
+        // $("#login-link").css("width", "100%");
+
+
 
         $("#search").addClass("d-flex justify-content-center");
 

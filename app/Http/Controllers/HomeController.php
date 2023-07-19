@@ -42,4 +42,17 @@ class HomeController extends Controller
 
         return view('home.home',compact('albums','bands'));
     }
+
+
+    public function search(Request $request){
+
+        $request->validate(['name'=>'required|string']);
+        
+        $name=$request->input('name');
+
+        $bands=Band::where('name','LIKE', '%'.$name.'%')->paginate(6);
+
+        return view('band.archive',compact('bands'));
+
+    }
 }
